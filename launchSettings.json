@@ -8,7 +8,9 @@
         "ordersconsumer": "StartDebugging",
         "paymentsapi": "StartDebugging",
         "paymentsconsumer": "StartDebugging",
-        "gateway": "StartDebugging"
+        "gateway": "StartDebugging",
+        "dockercomposeissue.notifications.api": "StartDebugging",
+        "dockercomposeissue.notifications.consumer": "StartDebugging"
       }
     }
   }

@@ -126,6 +126,32 @@ services:
     networks:
       - composeissue-net
 
+  notificationsapi:
+    image: ${DOCKER_REGISTRY-}dockercomposeissuenotificationsapi
+    build:
+      context: .
+      dockerfile: Notifications/DockerComposeIssue.Notifications.API/Dockerfile
+    environment:
+      - RabbitMq__Host=rabbitmq
+    depends_on:
+      - db_payments
+    ports:
+      - "6083:8080"
+    networks:
+      - composeissue-net
+
+  notificationsconsumer:
+    image: ${DOCKER_REGISTRY-}dockercomposeissuenotificationsconsumer
+    build:
+      context: .
+      dockerfile: Notifications/DockerComposeIssue.Notifications.Consumer/Dockerfile
+    environment:
+      - RabbitMq__Host=rabbitmq
+    depends_on:
+      - db_payments
+    networks:
+      - composeissue-net
+
 networks:
   composeissue-net:
     name: composeissue-net
@@ -135,3 +161,4 @@ volumes:
   pgdata_composeissue_orders_dev:
   pgdata_composeissue_payments_dev:
   rabbitmq_composeissue_data_dev:
+
