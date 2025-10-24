@@ -1,0 +1,6 @@
+@DockerComposeIssue.Gateway.API_HostAddress = http://localhost:5007
+
+GET {{DockerComposeIssue.Gateway.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
